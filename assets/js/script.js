@@ -41,12 +41,24 @@ var cityWeather = document.querySelector(".city-info");
 var forecastCards = document.querySelector(".forecast-cards");
 
 
+// target header in 5 day forecast
+var fiveDayHeader = document.querySelector(".five-day");
+
+
 // we target our containers for 5-day forecast
 var day1 = document.querySelector(".day1-card");
 var day2 = document.querySelector(".day2-card");
 var day3 = document.querySelector(".day3-card");
 var day4 = document.querySelector(".day4-card");
 var day5 = document.querySelector(".day5-card");
+
+
+// target recent searches section
+var recentSearch = document.querySelector(".recent-searches");
+
+
+// target recent searches header
+var recentHeader = document.querySelector(".recent-header");
 
 
 ////////////////////////////////////////////////////
@@ -62,6 +74,15 @@ var formSubmitHandler = function(event) {
 
     // retrieve value from input, trim removes unecessary spaces
     var city = cityInputEl.value.trim();
+
+
+    // we populate a recent searches area with user input
+    recentHeader.textContent = "Recent Searches:";
+    var recentSearchEl = document.createElement("p");
+    recentSearchEl.textContent = city;
+    recentSearch.appendChild(recentHeader);
+    recentSearch.appendChild(recentSearchEl);
+    
 
 
     // we must first obtain lat/lon by inputting city
@@ -93,8 +114,16 @@ var formSubmitHandler = function(event) {
                         console.log(data);
                     
                         // we have our data, now we need to display it
+
+
+                        // we need to show dates for today and 5 day
                         var today = new Date();
                         var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+                        var day1Date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+(today.getDate()+1);
+                        var day2Date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+(today.getDate()+2);
+                        var day3Date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+(today.getDate()+3);
+                        var day4Date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+(today.getDate()+4);
+                        var day5Date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+(today.getDate()+5);
 
 
                         // we need containers for date, temp, wind, humidity, uv index
@@ -117,6 +146,57 @@ var formSubmitHandler = function(event) {
                         cityWeather.appendChild(windContainer);
                         cityWeather.appendChild(humidityContainer);
                         cityWeather.appendChild(uvContainer);
+
+
+                        // create 5-day forecast header and info containers
+                        fiveDayHeader.textContent = "5-Day Forecast:";
+                        var day1DateContainer = document.createElement("p");
+                        var day1Temp = document.createElement("p");
+                        var day1Wind = document.createElement("p");
+                        var day1Hum = document.createElement("p");
+
+
+                        // put info into containers for Day 1
+                        
+                        day1DateContainer.textContent = day1Date;
+                        // must stringify data from object
+                        day1Temp.textContent = "Temp: " + JSON.stringify(data.daily[0].temp.day) + " Farenheit";
+                        day1Wind.textContent = data.daily.wind_speed;
+                        day1Hum.textContent = data.daily.humidity;
+                    
+                        
+
+
+                        // append containers 
+                        day1.appendChild(day1DateContainer);
+                        day1.appendChild(day1Temp);
+                        day1.appendChild(day1Wind);
+                        day1.appendChild(day1Hum);
+
+
+                        // day 2
+
+
+                        // append containers
+
+
+                        // day 3
+
+
+                        // append containers
+
+
+                        // day 4
+
+
+                        // append containers
+
+
+                        // day 5
+
+
+                        // append containers
+                        
                     });
                 });
             });
@@ -153,12 +233,13 @@ var clearBtn = document.querySelector(".clear-btn")
 clearBtn.addEventListener("click", function() {
     cityCard.textContent = "";
     forecastCards.textContent = "";
+    
 })
 
 
 //////////////////////////////////////////////////////
 
-
+// we want searches to be saved, let's try a function
 
 
 
