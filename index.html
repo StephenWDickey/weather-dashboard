@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+  <!-- local style sheet -->
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <!-- Bootstrap cdn --> 
+  <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+  
+  <title>Weather Dashboard</title>
+</head>
+<body>
+    <header>
+        <h1>Weather Dashboard</h1>
+    </header>
+    <main class="flex-row justify-space-between">
+        <div class="col-12 col-md-4">
+            <div class="card">
+                <h3 class = "card-header">Search for a City:</h3>
+                <form id="user-form" class="card-body">
+                    <label class="form-label" for="city"></label>
+                    <input name="city" id="city" type="text" autofocus="true" class="form-input" />
+                    <button type="submit" class="submit-btn">Get Weather!</button>
+                    <button type="submit" class="clear-btn">Clear</button>
+                </form>
+            </div>
+        </div>
+        <div class="city-card col-12 col-md-4">
+            <h3 class="city-header"></h3>
+            <div class="card city-info"></div>
+        </div>
+        <div class="forecast-cards">
+            <h3>5-Day Forecast:</h3>
+            <div class="day1-card card"></div>
+            <div class="day2-card card"></div>
+            <div class="day3-card card"></div>
+            <div class="day4-card card"></div>
+            <div class="day5-card card"></div>
+        </div>
+    <footer>
+        Made by Stephen W. Dickey
+    </footer>
+
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>

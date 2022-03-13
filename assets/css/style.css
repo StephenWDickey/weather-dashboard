@@ -1,0 +1,11 @@
+/* styling for weather dashboard */
+
+.clear-btn {
+    background-color: lightcoral;
+    font-weight: bold;
+}
+
+.submit-btn {
+    background-color: green;
+    font-weight: bold;
+}
