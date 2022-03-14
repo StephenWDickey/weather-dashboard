@@ -161,6 +161,20 @@ var formSubmitHandler = function(event) {
                         humidityContainer.textContent = "Humidity: " + data.current.humidity;
                         uvContainer.textContent = "UV index: " + data.current.uvi; 
 
+                        
+                        // uv color coding
+                        if (data.current.uvi < 2) {
+                            uvContainer.classList.add("bg-success");
+                        }
+                        
+                        if (data.current.uvi >= 2) {
+                            uvContainer.classList.add("bg-warning");
+                        }
+
+                        if (data.current.uvi >= 5) {
+                            uvContainer.classList.add("bg-danger");
+                        }
+
 
                         // these containers must now be appended to parent container
                         cityWeather.appendChild(dateContainer);
@@ -332,7 +346,9 @@ clearBtn.addEventListener("click", function(event) {
 })
 
 
+
 //////////////////////////////////////////////////////
+
 
 // we must also set up localStorage so people can see info from cities that have been searched
 // we want search results to remain on page
@@ -353,7 +369,9 @@ var getLocalStorage = function() {
 
 getLocalStorage();
 
+
 /////////////////////////////////////////////////////
+
 
 // we are adding event listener to old search
 localSearch.addEventListener ("click", function() {
@@ -421,7 +439,21 @@ var oldSearch = function () {
                         tempContainer.textContent = "Temp: " + data.current.temp + " Farenheit";
                         windContainer.textContent =  "Wind-speed: " + data.current.wind_speed;
                         humidityContainer.textContent = "Humidity: " + data.current.humidity;
-                        uvContainer.textContent = "UV index: " + data.current.uvi; 
+                        uvContainer.textContent = "UV index: " + data.current.uvi;
+                        
+                        
+                        // uv color coding
+                        if (data.current.uvi < 2) {
+                            uvContainer.classList.add("bg-success");
+                        }
+                        
+                        if (data.current.uvi >= 2) {
+                            uvContainer.classList.add("bg-warning");
+                        }
+
+                        if (data.current.uvi >= 5) {
+                            uvContainer.classList.add("bg-danger");
+                        }
    
                         // these containers must now be appended to parent container
                         cityWeather.appendChild(dateContainer);
@@ -556,3 +588,9 @@ var oldSearch = function () {
        });
    }
 
+////////////////////////////////////////////////////////////////
+
+// to setup color-coded uv data, we must know more about uv index
+// if uv < 2 = favorable
+// if uv > 3 or < 5 = moderate
+// if uv > 5 = severe
