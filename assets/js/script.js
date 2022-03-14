@@ -48,6 +48,18 @@ var forecastCards = document.querySelector(".forecast-cards");
 var fiveDayHeader = document.querySelector(".five-day");
 
 
+// target icon for city
+var cityIcon = document.querySelector(".city-icon");
+
+
+// target icons for five day forecast
+var day1Icon = document.querySelector(".day1-icon");
+var day2Icon = document.querySelector(".day2-icon");
+var day3Icon = document.querySelector(".day3-icon");
+var day4Icon = document.querySelector(".day4-icon");
+var day5Icon = document.querySelector(".day5-icon");
+
+
 // we target our containers for 5-day forecast
 var day1 = document.querySelector(".day1-card");
 var day2 = document.querySelector(".day2-card");
@@ -148,7 +160,6 @@ var formSubmitHandler = function(event) {
 
                         // we need containers for date, temp, wind, humidity, uv index
                         var dateContainer = document.createElement("p");
-                        var currentIcon = document.createElement("i");
                         var tempContainer = document.createElement("p");
                         var windContainer = document.createElement("p");
                         var humidityContainer = document.createElement("p");
@@ -162,33 +173,25 @@ var formSubmitHandler = function(event) {
                         humidityContainer.textContent = "Humidity: " + data.current.humidity;
                         uvContainer.textContent = "UV index: " + data.current.uvi; 
 
-                        
-                        // need to choose icon based on weather
-                        weather = JSON.stringify(data.current.weather[0].id);
-                        if (weather == "801" || "802" || "803" || "804") {
-                            currentIcon.classList.add("fa-solid", "fa-cloud");
-                        }
-                        if (weather == "800") {
-                            currentIcon.classList.add("fa-solid", "fa-sun");
-                        }
-                        if (weather == "600" || "601" || "602") {
-                            currentIcon.classList.add("fa-solid", "fa-snowflake");
-                        }
-                        if (weather === "500" || "501" || "502") {
-                            currentIcon.classList.add("fa-solid", "fa-cloud-showers-heavy");
-                        }
-                        if (weather === "300" || "301" || "311") {
-                            currentIcon.classList.add("fa-solid", "fa-cloud-drizzle");
-                        }
-                        if (weather === "200" || "211" || "212") {
-                            currentIcon.classList.add("fa-solid", "fa-cloud-bolt");
-                        }
-                        else {
-                            currentIcon.classList.add("fa-solid", "fa-sun");
-                        }
+                        weather = JSON.stringify(data.current.weather[0].main)
+                        console.log(weather);
+                        if (weather == "Clouds") {
+                            cityIcon.classList.add("fa-cloud");
+                        };
+                        if (weather == "Clear") {
+                            cityIcon.classList.add("fa-sun")
+                        };
+                        if (weather == "Rain") {
+                            cityIcon.classList.add("fa-cloud-showers-heavy");
+                        };
+                        if (weather == "Snow") {
+                            cityIcon.classList.add("fa-snowflake");
+                        };
+                        if (weather == "Thunderstorm") {
+                            cityIcon.classList.add("fa-cloud-bolt");
+                        };
 
-                        
-                        
+    
                         // uv color coding
                         if (data.current.uvi < 2) {
                             uvContainer.classList.add("bg-success");
@@ -205,11 +208,11 @@ var formSubmitHandler = function(event) {
 
                         // these containers must now be appended to parent container
                         cityWeather.appendChild(dateContainer);
-                        cityWeather.appendChild(currentIcon);
                         cityWeather.appendChild(tempContainer);
                         cityWeather.appendChild(windContainer);
                         cityWeather.appendChild(humidityContainer);
                         cityWeather.appendChild(uvContainer);
+                        cityWeather.appendChild(cityIcon);
 
 
                         // add bootstrap styling 
@@ -457,7 +460,6 @@ var oldSearch = function () {
    
                         // we need containers for date, temp, wind, humidity, uv index
                         var dateContainer = document.createElement("p");
-                        var currentIcon = document.createElement("i");
                         var tempContainer = document.createElement("p");
                         var windContainer = document.createElement("p");
                         var humidityContainer = document.createElement("p");
@@ -475,29 +477,6 @@ var oldSearch = function () {
                         
 
                         // need to choose icon based on weather
-                        weather = JSON.stringify(data.current.weather[0].id);
-                        if (weather == "801" || "802" || "803" || "804") {
-                            currentIcon.classList.add("fa-solid", "fa-cloud");
-                        }
-                        if (weather == "800") {
-                            currentIcon.classList.add("fa-solid", "fa-sun");
-                        }
-                        if (weather == "600" || "601" || "602") {
-                            currentIcon.classList.add("fa-solid", "fa-snowflake");
-                        }
-                        if (weather === "500" || "501" || "502") {
-                            currentIcon.classList.add("fa-solid", "fa-cloud-showers-heavy");
-                        }
-                        if (weather === "300" || "301" || "311") {
-                            currentIcon.classList.add("fa-solid", "fa-cloud-drizzle");
-                        }
-                        if (weather === "200" || "211" || "212") {
-                            currentIcon.classList.add("fa-solid", "fa-cloud-bolt");
-                        }
-                        else {
-                            currentIcon.classList.add("fa-solid", "fa-sun");
-                        }
-                        
 
 
 
@@ -518,7 +497,6 @@ var oldSearch = function () {
    
                         // these containers must now be appended to parent container
                         cityWeather.appendChild(dateContainer);
-                        cityWeather.appendChild(currentIcon);
                         cityWeather.appendChild(tempContainer);
                         cityWeather.appendChild(windContainer);
                         cityWeather.appendChild(humidityContainer);
@@ -663,3 +641,17 @@ var oldSearch = function () {
 // if uv > 5 = severe
 
 // must add icons for weather conditions
+// need to choose icon based on weather
+    //("fa-solid", "fa-cloud");
+      
+    //("fa-solid", "fa-sun");
+      
+    //("fa-solid", "fa-snowflake");
+      
+    //("fa-solid", "fa-cloud-showers-heavy");
+
+    //("fa-solid", "fa-cloud-drizzle");
+    
+    //("fa-solid", "fa-cloud-bolt");
+    
+    //("fa-solid", "fa-sun");

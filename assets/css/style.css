@@ -5,9 +5,17 @@
     font-weight: bold;
 }
 
+.clear-btn:hover {
+    background-color: darkred;
+}
+
 .submit-btn {
     background-color: green;
     font-weight: bold;
+}
+
+.submit-btn:hover {
+    background-color: lightgreen;
 }
 
 .saved-searches {

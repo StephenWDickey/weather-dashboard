@@ -1,6 +1,6 @@
 # weather-dashboard
 
-![screenshot of weather-dashboard](./.png)
+![screenshot of weather-dashboard](./weather-dashboard.png)
 
 ## Description
 In this week's challenge we were tasked with creating a weather dashboard.
