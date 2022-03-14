@@ -148,6 +148,7 @@ var formSubmitHandler = function(event) {
 
                         // we need containers for date, temp, wind, humidity, uv index
                         var dateContainer = document.createElement("p");
+                        var currentIcon = document.createElement("i");
                         var tempContainer = document.createElement("p");
                         var windContainer = document.createElement("p");
                         var humidityContainer = document.createElement("p");
@@ -161,6 +162,32 @@ var formSubmitHandler = function(event) {
                         humidityContainer.textContent = "Humidity: " + data.current.humidity;
                         uvContainer.textContent = "UV index: " + data.current.uvi; 
 
+                        
+                        // need to choose icon based on weather
+                        weather = JSON.stringify(data.current.weather[0].id);
+                        if (weather == "801" || "802" || "803" || "804") {
+                            currentIcon.classList.add("fa-solid", "fa-cloud");
+                        }
+                        if (weather == "800") {
+                            currentIcon.classList.add("fa-solid", "fa-sun");
+                        }
+                        if (weather == "600" || "601" || "602") {
+                            currentIcon.classList.add("fa-solid", "fa-snowflake");
+                        }
+                        if (weather === "500" || "501" || "502") {
+                            currentIcon.classList.add("fa-solid", "fa-cloud-showers-heavy");
+                        }
+                        if (weather === "300" || "301" || "311") {
+                            currentIcon.classList.add("fa-solid", "fa-cloud-drizzle");
+                        }
+                        if (weather === "200" || "211" || "212") {
+                            currentIcon.classList.add("fa-solid", "fa-cloud-bolt");
+                        }
+                        else {
+                            currentIcon.classList.add("fa-solid", "fa-sun");
+                        }
+
+                        
                         
                         // uv color coding
                         if (data.current.uvi < 2) {
@@ -178,6 +205,7 @@ var formSubmitHandler = function(event) {
 
                         // these containers must now be appended to parent container
                         cityWeather.appendChild(dateContainer);
+                        cityWeather.appendChild(currentIcon);
                         cityWeather.appendChild(tempContainer);
                         cityWeather.appendChild(windContainer);
                         cityWeather.appendChild(humidityContainer);
@@ -429,11 +457,15 @@ var oldSearch = function () {
    
                         // we need containers for date, temp, wind, humidity, uv index
                         var dateContainer = document.createElement("p");
+                        var currentIcon = document.createElement("i");
                         var tempContainer = document.createElement("p");
                         var windContainer = document.createElement("p");
                         var humidityContainer = document.createElement("p");
                         var uvContainer = document.createElement("p");
-   
+                        
+
+                        
+
                         // we must generate text content in each container
                         dateContainer.textContent = "Today's Date: " + date;
                         tempContainer.textContent = "Temp: " + data.current.temp + " Farenheit";
@@ -441,7 +473,35 @@ var oldSearch = function () {
                         humidityContainer.textContent = "Humidity: " + data.current.humidity;
                         uvContainer.textContent = "UV index: " + data.current.uvi;
                         
+
+                        // need to choose icon based on weather
+                        weather = JSON.stringify(data.current.weather[0].id);
+                        if (weather == "801" || "802" || "803" || "804") {
+                            currentIcon.classList.add("fa-solid", "fa-cloud");
+                        }
+                        if (weather == "800") {
+                            currentIcon.classList.add("fa-solid", "fa-sun");
+                        }
+                        if (weather == "600" || "601" || "602") {
+                            currentIcon.classList.add("fa-solid", "fa-snowflake");
+                        }
+                        if (weather === "500" || "501" || "502") {
+                            currentIcon.classList.add("fa-solid", "fa-cloud-showers-heavy");
+                        }
+                        if (weather === "300" || "301" || "311") {
+                            currentIcon.classList.add("fa-solid", "fa-cloud-drizzle");
+                        }
+                        if (weather === "200" || "211" || "212") {
+                            currentIcon.classList.add("fa-solid", "fa-cloud-bolt");
+                        }
+                        else {
+                            currentIcon.classList.add("fa-solid", "fa-sun");
+                        }
                         
+
+
+
+
                         // uv color coding
                         if (data.current.uvi < 2) {
                             uvContainer.classList.add("bg-success");
@@ -454,9 +514,11 @@ var oldSearch = function () {
                         if (data.current.uvi >= 5) {
                             uvContainer.classList.add("bg-danger");
                         }
+
    
                         // these containers must now be appended to parent container
                         cityWeather.appendChild(dateContainer);
+                        cityWeather.appendChild(currentIcon);
                         cityWeather.appendChild(tempContainer);
                         cityWeather.appendChild(windContainer);
                         cityWeather.appendChild(humidityContainer);
@@ -474,26 +536,31 @@ var oldSearch = function () {
    
                         // create 5-day forecast header and info containers
                         fiveDayHeader.textContent = "5-Day Forecast:";
+                        var day1Icon = document.createElement("i")
                         var day1DateContainer = document.createElement("p");
                         var day1Temp = document.createElement("p");
                         var day1Wind = document.createElement("p");
                         var day1Hum = document.createElement("p");
-   
+                        
+                        var day2Icon = document.createElement("i")
                         var day2DateContainer = document.createElement("p");
                         var day2Temp = document.createElement("p");
                         var day2Wind = document.createElement("p");
                         var day2Hum = document.createElement("p");
-   
+                        
+                        var day3Icon = document.createElement("i")
                         var day3DateContainer = document.createElement("p");
                         var day3Temp = document.createElement("p");
                         var day3Wind = document.createElement("p");
                         var day3Hum = document.createElement("p");
-   
+                        
+                        var day4Icon = document.createElement("i")
                         var day4DateContainer = document.createElement("p");
                         var day4Temp = document.createElement("p");
                         var day4Wind = document.createElement("p");
                         var day4Hum = document.createElement("p");
    
+                        var day5Icon = document.createElement("i")
                         var day5DateContainer = document.createElement("p");
                         var day5Temp = document.createElement("p");
                         var day5Wind = document.createElement("p");
@@ -594,3 +661,5 @@ var oldSearch = function () {
 // if uv < 2 = favorable
 // if uv > 3 or < 5 = moderate
 // if uv > 5 = severe
+
+// must add icons for weather conditions
