@@ -18,40 +18,42 @@
   <title>Weather Dashboard</title>
 </head>
 <body>
-    <header>
+    <header class="bg-info">
         <h1>Weather Dashboard</h1>
     </header>
-    <main class="flex-row justify-space-between">
-        <div class="col-12 col-md-4">
-            <div class="card">
-                <h3 class = "card-header">Search for a City:</h3>
-                <form id="user-form" class="card-body">
-                    <label class="form-label" for="city"></label>
-                    <input name="city" id="city" type="text" autofocus="true" class="form-input" />
-                    <button type="submit" class="submit-btn">Get Weather!</button>
-                    <button type="submit" class="clear-btn">Clear</button>
-                </form>
+    <main>
+        
+        <div class="city-container">
+            <h3 class = "card-header">Search for a City:</h3>
+            <form id="user-form" class="card-body">
+                <label class="form-label" for="city"></label>
+                <input name="city" id="city" type="text" autofocus="true" class="form-input" />
+                <button type="submit" class="submit-btn">Get Weather!</button>
+                <button type="submit" class="clear-btn">Clear</button>
+            </form>
+        </div>
+        <div class="recent-searches">
+            <h4 class="recent-header">Recent Searches:</h4>
+            <div class="saved-searches"></div>
+        </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sml-12">
+                <div class="city-card col-12 col-md-4">
+                    <h3 class="city-header bg-info"></h3>
+                    <div class="city-info"></div>
+                </div>
+                <div class="forecast-cards">
+                    <h3 class="five-day bg-info"></h3>
+                    <div class="day1-card"></div>
+                    <div class="day2-card"></div>
+                    <div class="day3-card"></div>
+                    <div class="day4-card"></div>
+                    <div class="day5-card"></div>
+                </div>
             </div>
-        <div class="card recent-searches">
-            <h4 class="recent-header"></h4>
         </div>
-        </div>
-        <div class="card city-card col-12 col-md-4">
-            <h3 class="city-header"></h3>
-            <div class="card city-info"></div>
-        </div>
-        <div class="forecast-cards">
-            <h3 class="five-day"></h3>
-            <div class="day1-card card"></div>
-            <div class="day2-card card"></div>
-            <div class="day3-card card"></div>
-            <div class="day4-card card"></div>
-            <div class="day5-card card"></div>
-        </div>
-    <footer>
-        Made by Stephen W. Dickey
-    </footer>
-
+    </main>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>

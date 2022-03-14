@@ -9,3 +9,36 @@
     background-color: green;
     font-weight: bold;
 }
+
+.saved-searches {
+    background-color: lightgray;
+}
+
+.saved-searches:hover {
+    background-color: grey;
+}
+
+.recent-searches {
+    padding: 20px;
+}
+
+.city-card {
+    padding: 20px;
+}
+
+.forecast-cards {
+    padding: 20px;
+}
+
+
+.city-container {
+    text-align: center;
+    margin: auto;
+    width: 100%;
+}
+
+.city-card {
+    text-align: center;
+    margin: auto;
+    width: 100%;
+}
